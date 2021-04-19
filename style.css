@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.search{
+    position: absolute;
+    top: 0%;
+    left: 40% ;
+    display: block;
+    margin: auto
+
+}
+.oontainer{
+    text-align: center;
+    margin: auto;
+}
+input{
+    height: 40px;
+    width: 300px;
+    border: 2px solid rgba(141, 115, 31, 0.795);
+    border-radius: 50px;
+    outline: 0;
+
+}
+button{
+    padding: 10px;
+    border-radius: 10px;
+    outline: 0;
+
+}
+img {
+    height: 300px;
+    width: 300px;
+}
+.searchFood{
+    display: grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap: 2rem;
+    margin: auto!important;
+}
+.meal-item{
+border-radius: 1rem;
+overflow: hidden;
+box-shadow: 0 4px 21px -12px rgb(228, 225, 225);
+}
+.listItem{
+    position: absolute;
+    top: 30%;
+    left: 20% ;
+    display: block;
+    line-height: 30px;
+    background-color: antiquewhite;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+
+
+}
+.listItem img{
+    height: 400px;
+    width: 80%;
+    size: cover;
+    border-radius: 10px;
+}
+.listItem h1{
+    padding: 20px 0px;
+}

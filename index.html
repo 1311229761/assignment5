@@ -1,13 +1,94 @@
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>hi</h1>
+    <div id="showIngredient">
+
+    </div>
+      <div class="container">
+            <div class="search">
+                <input id="inputFood" type="text">
+                <button tton id="inputBtn" onclick="searchFoods()">click me</button>
+            </div>
+  
+           <div class="searchFood" id="search-result">
+    
+           </div>
+          
+      </div>
+     
+  
+<script>
+
+
+const searchFoods = ()=>{
+    const inputFood = document.getElementById('inputFood').value
+    const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${inputFood}`
+
+    fetch(url)
+  .then(response => response.json())
+  .then(data => getFood(data.meals))
+   
+     const getFood = foods =>{
+      
+        foods.forEach(meal => {
+           
+            
+            const showFood = document.getElementById("search-result");
+            const innerDiv = document.createElement('div')
+           
+            showFood.appendChild(innerDiv)
+
+            innerDiv.innerHTML = `
+            <div onclick="moreInfo('${meal.idMeal}')">
+                <img src="${meal.strMealThumb}" >
+                <h1>${meal.strMeal} </h1>
+
+                </div>`
+        });
+     }
+    }
+    const moreInfo = id =>{
+    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+  .then(response => response.json())
+  .then(data => ingredientsInfo(data.meals[0]))
+
+  const ingredientsInfo = ingredients =>{
+
+   
+      const mainIngredientDiv = document.getElementById("showIngredient")
+      mainIngredientDiv.innerHTML = `
+            <div class="listItem" >
+                <h1>meal details</h1>
+                <img src="${ingredients.strMealThumb}" >
+                <h1>${ingredients.strMeal} </h1>
+                <h1>ingredients</h1>
+                <li>${ingredients.strIngredient1} </li>
+                <li>${ingredients.strIngredient2} </li>
+                <li>${ingredients.strIngredient3} </li>
+                <li>${ingredients.strIngredient4} </li>
+                <li>${ingredients.strIngredient5} </li>
+                <li>${ingredients.strIngredient6} </li>
+                <li>${ingredients.strIngredient7} </li>
+                <li>${ingredients.strIngredient8} </li>
+                <li>${ingredients.strIngredient9} </li>
+                <li>${ingredients.strIngredient10} </li>
+        
+                </div>`
+                              
+  }
+  
+  }
+
+</script>
+
+
+
+
 </body>
 </html>
