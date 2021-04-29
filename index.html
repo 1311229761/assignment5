@@ -25,7 +25,16 @@
   
 <script>
 
+    var go = document.getElementById("inputBtn");
+var txt = document.getElementById("inputFood");
 
+txt.addEventListener("keypress", function(event) {
+
+    if (event.keyCode == 13)
+        go.click();
+});
+    
+    
 const searchFoods = ()=>{
     const inputFood = document.getElementById('inputFood').value
     const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${inputFood}`
